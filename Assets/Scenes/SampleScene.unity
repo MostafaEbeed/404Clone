@@ -908,9 +908,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
-  initialMoveSpeed: 5
+  initialMoveSpeed: 10
   maxMoveSpeed: 45
-  speedIncreaseRate: 0.2
+  speedIncreaseRate: 0.5
 --- !u!1 &1877583517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,9 +1041,9 @@ MonoBehaviour:
   sfxMixerGroup: {fileID: 7369405246615879246, guid: d0809c59d911b1743ab7b4dee271fd50, type: 2}
   sfxNoEffectMixerGroup: {fileID: 8772322798107691250, guid: d0809c59d911b1743ab7b4dee271fd50, type: 2}
   musicSource: {fileID: 1057201717}
-  gameplayMusic: {fileID: 0}
-  mainMenuMusic: {fileID: 0}
-  gameOverMusic: {fileID: 0}
+  gameplayMusic: {fileID: 8300000, guid: 1994b7428c26a1f4f856050c8f7940a5, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 961ef6df713a14849b6ca77c575a037c, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 961ef6df713a14849b6ca77c575a037c, type: 3}
   sfxPrefab: {fileID: 4106771212154636883, guid: c4956ddbb16c5ef489e8fa927de36264, type: 3}
 --- !u!4 &2123138250
 Transform:

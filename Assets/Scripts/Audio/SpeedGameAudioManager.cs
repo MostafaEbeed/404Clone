@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Runtime.InteropServices;
 
-public class SpeedGameAudioManager : MonoBehaviour
+public class SpeedGameAudioManager : MonoBehaviour, IGameStateListener
 {
     public static SpeedGameAudioManager Instance { get; private set; }
 
@@ -33,7 +33,7 @@ public class SpeedGameAudioManager : MonoBehaviour
     
     private AudioClip currentMusicClip;
 
-    public enum MusicType { Gameplay, MainMenu, GameOver }
+    public enum MusicType { Gameplay, MainMenu, GameOver, None }
 
     void Awake()
     {
@@ -126,6 +126,7 @@ public class SpeedGameAudioManager : MonoBehaviour
             MusicType.Gameplay => gameplayMusic,
             MusicType.MainMenu => mainMenuMusic,
             MusicType.GameOver => gameOverMusic,
+            MusicType.None => null,
             _ => null
         };
     }
@@ -198,5 +199,26 @@ public class SpeedGameAudioManager : MonoBehaviour
         float clampedVolume = Mathf.Clamp(volume, 0.0001f, 1.0f);
         float dBVolume = Mathf.Log10(clampedVolume) * 20f;
         mainMixer.SetFloat(parameterName, dBVolume);
+    }
+
+    public void OnGameStateChange(GameManager.GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameManager.GameState.StartMenu:
+                PlayMusic(MusicType.MainMenu);
+                break;
+   
+            case GameManager.GameState.Gameplay:
+                PlayMusic(MusicType.Gameplay);
+                break;
+            
+            case GameManager.GameState.GameOver:
+                PlayMusic(MusicType.GameOver);
+                break;
+                                
+            default:
+                break;
+        }
     }
 }
