@@ -250,14 +250,14 @@ MonoBehaviour:
   - {fileID: 7573471501327441081}
   obstaclePrefabs:
   - {fileID: 4693939218265384095, guid: 72a7c5e8600e94a4ab732f2ce35f3e81, type: 3}
-  obstacleSpawnChance: 0.75
+  obstacleSpawnChance: 0.973
   minObstaclesToSpawn: 1
   maxObstaclesToSpawn: 2
   boosterSpawnPoints:
   - {fileID: 3480067039116228759}
   boosterPrefabs:
   - {fileID: 4019718002282649357, guid: cd4281ca22b65da4c89c2970b4673bbc, type: 3}
-  boosterSpawnChance: 0.25
+  boosterSpawnChance: 0.587
   minBoostersToSpawn: 0
   maxBoostersToSpawn: 1
 --- !u!1 &5051794526598897357

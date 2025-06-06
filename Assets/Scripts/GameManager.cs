@@ -32,6 +32,13 @@ public class GameManager : MonoBehaviour
 
     public float CurrentMoveSpeed { get; private set; }
 
+    // --- Variables to manage the speed boost ---
+    private float speedBoostAmount = 0f;
+    private Coroutine activeSpeedBoostCoroutine;
+
+    // --- MODIFIED: A new property for the final combined speed ---
+    public float EffectiveMoveSpeed => CurrentMoveSpeed + speedBoostAmount;
+    
     private void Awake()
     {
         // Implement the Singleton pattern
@@ -79,6 +86,13 @@ public class GameManager : MonoBehaviour
     {
         //if (newState == CurrentState) return;
 
+        if (activeSpeedBoostCoroutine != null)
+        {
+            StopCoroutine(activeSpeedBoostCoroutine);
+            activeSpeedBoostCoroutine = null;
+            speedBoostAmount = 0;
+        }
+        
         CurrentState = newState;
         
         // Call the event to notify listeners (like UI, Sound, Player)
@@ -115,8 +129,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
     
     // --- Public methods to be called by other scripts (e.g., UI buttons) ---
+    
+    public void ApplyTemporarySpeedBoost(float bonus, float duration)
+    {
+        // If a boost is already active, stop it before starting a new one.
+        // This ensures boost timers don't overlap strangely.
+        if (activeSpeedBoostCoroutine != null)
+        {
+            StopCoroutine(activeSpeedBoostCoroutine);
+        }
+        
+        activeSpeedBoostCoroutine = StartCoroutine(SpeedBoostRoutine(bonus, duration));
+    }
+
+    private IEnumerator SpeedBoostRoutine(float bonus, float duration)
+    {
+        Debug.Log($"Speed boost started! Adding {bonus} speed.");
+        speedBoostAmount = bonus;
+        
+        yield return new WaitForSeconds(duration);
+        
+        Debug.Log("Speed boost ended. Reverting speed.");
+        speedBoostAmount = 0;
+        activeSpeedBoostCoroutine = null; // Mark the coroutine as finished
+    }
     
     public void StartGame()
     {

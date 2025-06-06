@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using UnityEngine.Serialization; // Needed for System.Action
 
 public class Health : MonoBehaviour
@@ -38,6 +39,8 @@ public class Health : MonoBehaviour
     public bool IsDead => isDead;
     public bool IsInvincible => isInvincible; // Public getter for invincibility status
 
+    private Coroutine activeSpeedBoostCoroutine;
+    
     void Awake()
     {
         // Initialize health on awake
@@ -153,12 +156,24 @@ public class Health : MonoBehaviour
     /// Sets the invincibility state.
     /// Useful for temporary power-ups.
     /// </summary>
-    public void SetInvincible(bool invincible)
+    public void SetInvincible(bool invincible, float duration)
     {
         isInvincible = invincible;
         Debug.Log($"{gameObject.name} Invincibility set to: {isInvincible}");
+
+        activeSpeedBoostCoroutine = StartCoroutine(InvincibleBoostRoutine(invincible, duration));
     }
 
+    private IEnumerator InvincibleBoostRoutine(bool invincible, float duration)
+    {
+        isInvincible = invincible;
+        
+        yield return new WaitForSeconds(duration);
+        
+        isInvincible = false;
+        activeSpeedBoostCoroutine = null; // Mark the coroutine as finished
+    }
+    
     /// <summary>
     /// Instantly kills the object, bypassing invincibility. Useful for kill zones etc.
     /// </summary>
