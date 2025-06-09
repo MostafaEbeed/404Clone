@@ -44,10 +44,10 @@ namespace EnvSpawnSystem
         void Start()
         {
             // Add the mover component if it doesn't exist
-            if (GetComponent<WorldMover>() == null)
+            /*if (GetComponent<WorldMover>() == null)
             {
                 gameObject.AddComponent<WorldMover>();
-            }
+            }*/
 
             // --- Call the spawning logic for both types ---
             ProcessSpawning(obstacleSpawnPoints, obstaclePrefabs, obstacleSpawnChance, minObstaclesToSpawn,

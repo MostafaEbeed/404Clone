@@ -19,13 +19,15 @@ public class Booster : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Get the player's Health component
-            Health playerHealth = other.GetComponent<Health>();
+            /*Health playerHealth = other.GetComponent<Health>();
             if (playerHealth != null)
             {
                 // Grant invincibility by calling the function on the Health script
                 playerHealth.SetInvincible(true, boostDuration);
-            }
+            }*/
 
+            BoosterHandler.Instance.ActivateBooster(speedBonus, boostDuration);
+            
             // Tell the GameManager to apply the speed boost
             GameManager.Instance.ApplyTemporarySpeedBoost(speedBonus, boostDuration);
 

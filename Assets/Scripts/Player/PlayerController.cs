@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,8 +27,11 @@ public class PlayerController : MonoBehaviour, IGameStateListener, IPlayerStateL
     [SerializeField] private float minSwipeDistanceY = 50f; // Minimum pixels to be considered a swipe
 
     private Rigidbody2D rb;
+    private PlayerAnimationController playerAnimation;
     private bool isGrounded;
     private Vector2 touchStartPos;
+
+    public Action OnPlayerDamaged;
     
     private void Awake()
     {
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour, IGameStateListener, IPlayerStateL
         else Instance = this;
         
         rb = GetComponent<Rigidbody2D>();
-
+        playerAnimation = GetComponentInChildren<PlayerAnimationController>();
     }
     
     void OnEnable()
@@ -142,10 +146,13 @@ public class PlayerController : MonoBehaviour, IGameStateListener, IPlayerStateL
     {
         if (isGrounded)
         {
+            playerAnimation.Run();
             Quaternion targetRot = Quaternion.Euler(0f, 0, 0f);
             playerVisual.transform.rotation = Quaternion.Slerp(playerVisual.transform.rotation, targetRot, Time.deltaTime * playerRotSpeed);
             return;
         }
+        
+        playerAnimation.Jump();
         
         if (rb.linearVelocity.y < 0)
         {

@@ -9,6 +9,6 @@ public class WorldMover : MonoBehaviour
         
         // Move the object to the left based on the current speed from the GameManager
         float speed = GameManager.Instance.EffectiveMoveSpeed;
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 }

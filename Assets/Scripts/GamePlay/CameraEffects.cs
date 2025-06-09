@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class CameraEffects : MonoBehaviour, IPlayerStateListener
+public class CameraEffects : MonoBehaviour
 {
     [SerializeField] float shakeIntensity;
     [SerializeField] float shakeTime;
@@ -24,16 +25,20 @@ public class CameraEffects : MonoBehaviour, IPlayerStateListener
         virtualCamera = FindObjectOfType<CinemachineCamera>();
 
         StopShake();
+    }
 
-        Health.OnDamaged += ShakeCameraOnDamaged;
+    private void Start()
+    {
+        PlayerController.Instance.OnPlayerDamaged += ShakeCameraOnDamaged;
     }
 
     private void OnDestroy()
     {
         StopShake();
-        Health.OnDamaged -= ShakeCameraOnDamaged;
+        PlayerController.Instance.OnPlayerDamaged -= ShakeCameraOnDamaged;
     }
 
+    [ContextMenu("Shake Camera")]
     public void ShakeCameraOnDamaged()
     {
         Debug.Log("Shaking camera");
@@ -82,22 +87,16 @@ public class CameraEffects : MonoBehaviour, IPlayerStateListener
         StartCoroutine(ChangeFOV(duration));
     }
     
-    public void ChangeCamFOV()
-    {
-        StopCoroutine(ChangeFOV(fovChangeSpeedDown));
-        StartCoroutine(ChangeFOV(fovChangeSpeedUp));
-    }
-
 
     private IEnumerator ChangeFOV(float duration)
     {
         float elapsedTime = 0f;
 
         // Increase FOV
-        while (elapsedTime < duration * 0.85f)
+        while (elapsedTime < duration * 0.95f)
         {
             elapsedTime += Time.deltaTime;
-            virtualCamera.Lens.FieldOfView = Mathf.Lerp(virtualCamera.Lens.FieldOfView, 6.5f, (elapsedTime / duration) * fovChangeSpeedUp);
+            virtualCamera.Lens.OrthographicSize = Mathf.Lerp(virtualCamera.Lens.OrthographicSize, 6.5f, (elapsedTime / duration) * fovChangeSpeedUp);
             yield return null;
         }
 
@@ -108,16 +107,8 @@ public class CameraEffects : MonoBehaviour, IPlayerStateListener
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            virtualCamera.Lens.FieldOfView = Mathf.Lerp(virtualCamera.Lens.FieldOfView, 5.5f, (elapsedTime / duration) * fovChangeSpeedDown);
+            virtualCamera.Lens.OrthographicSize = Mathf.Lerp(virtualCamera.Lens.OrthographicSize, 5.5f, (elapsedTime / duration) * fovChangeSpeedDown);
             yield return null;
-        }
-    }
-
-    public void OnPlayerStateChange(GameManager.PlayerState playerState)
-    {
-        if (playerState == GameManager.PlayerState.Boosted)
-        {
-            ChangeCamFOV();
         }
     }
 }

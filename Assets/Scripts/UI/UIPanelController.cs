@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,12 @@ public class UIPanelController : MonoBehaviour
     public float hideAnimationDuration = 0.5f;
 
     private bool isVisible = false;
+
+    private void Start()
+    {
+        panel.SetActive(false);
+        Invoke("TogglePanel", 1f);
+    }
 
     public void TogglePanel()
     {

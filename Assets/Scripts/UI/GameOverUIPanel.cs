@@ -11,7 +11,7 @@ public class GameOverUIPanel : MonoBehaviour
     {
         UpdateTimerText();
         
-        Invoke("LoadLevel", 5f);
+        Invoke("LoadLevel", 6f);
     }
 
     private void UpdateTimerText()

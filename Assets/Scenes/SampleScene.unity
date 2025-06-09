@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 80491375}
   - component: {fileID: 80491374}
   - component: {fileID: 80491376}
+  - component: {fileID: 80491377}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -263,8 +264,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80491373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.8440464, z: -3.0870843}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.33, y: -0.8440465, z: -3.0870843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,6 +288,18 @@ MonoBehaviour:
   AmplitudeGain: 1
   FrequencyGain: 1
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &80491377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80491373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea48922e09ae79c4f81cca3b6dfc5af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &398033007
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +789,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.8440464, z: -3.0870843}
+  m_LocalPosition: {x: -2.33, y: -0.8440465, z: -3.0870843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -826,25 +839,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aefb09a2a365974aaf4048f1d689144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeIntensity: 0.5
-  shakeTime: 1
+  shakeIntensity: 2
+  shakeTime: 0.3
   shakeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.0021966
-      value: -0.000026461901
-      inSlope: 0.003505996
-      outSlope: 0.003505996
+      time: 1
+      value: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -853,7 +866,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   fovChangeSpeedUp: 7
-  fovChangeSpeedDown: 2
+  fovChangeSpeedDown: 0.1
 --- !u!1 &530520143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1789,8 @@ GameObject:
   - component: {fileID: 879812785}
   - component: {fileID: 879812782}
   - component: {fileID: 879812784}
+  - component: {fileID: 879812786}
+  - component: {fileID: 879812787}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1792,7 +1807,7 @@ Transform:
   m_GameObject: {fileID: 879812780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.6, y: -1.9399999, z: 0}
+  m_LocalPosition: {x: -7.6, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1865,7 +1880,7 @@ MonoBehaviour:
   maxHealth: 3
   isInvincible: 0
   currentHealth: 0
-  hitObjectSFX: {fileID: 0}
+  hitObjectSFX: {fileID: 8300000, guid: e95ca78bf3e231f48a19778590e8a9df, type: 3}
   hitCharacterSFX_male: {fileID: 0}
   hitCharacterSFX_female: {fileID: 0}
 --- !u!61 &879812785
@@ -1902,7 +1917,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.53855133, y: 0}
+  m_Offset: {x: 0.41208863, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1912,8 +1927,32 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.0771027, y: 1}
+  m_Size: {x: 1.8241773, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &879812786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879812780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea48922e09ae79c4f81cca3b6dfc5af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &879812787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879812780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff24c06e359952479e82efda632e324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &924455195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &954318539
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,7 +2010,7 @@ Transform:
   m_GameObject: {fileID: 954318538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6300001, y: 0, z: 0}
+  m_LocalPosition: {x: -0.38, y: 0.11, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2022,7 +2061,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.25
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -2031,8 +2070,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.0114669455
+        value: 0.48484617
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2054,8 +2093,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0, g: 0, b: 0, a: 1}
-      key1: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
-      key2: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 0, g: 0, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2084,11 +2123,11 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 3
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
@@ -2152,7 +2191,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 6153548755331546162, guid: 70d3c3c6988e1dc43b2c8cd947d35a63, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2425,6 +2464,7 @@ MonoBehaviour:
   initialMoveSpeed: 10
   maxMoveSpeed: 45
   speedIncreaseRate: 0.5
+  cameraEffects: {fileID: 519420034}
 --- !u!1 &1158120726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,7 +2924,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 6153548755331546162, guid: 70d3c3c6988e1dc43b2c8cd947d35a63, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2917,7 +2957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1468714458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3274,7 +3314,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914573712}
-  - component: {fileID: 1914573713}
   - component: {fileID: 1914573714}
   m_Layer: 0
   m_Name: Env
@@ -3292,24 +3331,12 @@ Transform:
   m_GameObject: {fileID: 1914573711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.64, z: 0}
+  m_LocalPosition: {x: 0, y: -2.9700003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1914573713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914573711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea48922e09ae79c4f81cca3b6dfc5af5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1914573714
 MonoBehaviour:
   m_ObjectHideFlags: 0

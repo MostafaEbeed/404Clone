@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &143572682766491152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7820873961236194590}
+  m_Layer: 6
+  m_Name: BoostSpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7820873961236194590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143572682766491152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.23, y: 2.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5258389499582025617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356797156949868517
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 356797156949868517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.3, y: 0, z: 0}
+  m_LocalPosition: {x: 10.62, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -251,14 +282,16 @@ MonoBehaviour:
   - {fileID: 7573471501327441081}
   obstaclePrefabs:
   - {fileID: 4693939218265384095, guid: 72a7c5e8600e94a4ab732f2ce35f3e81, type: 3}
+  - {fileID: 4693939218265384095, guid: 77fb2b31f79a54847b2f6b0a096f059d, type: 3}
   obstacleSpawnChance: 0.973
   minObstaclesToSpawn: 1
   maxObstaclesToSpawn: 2
   boosterSpawnPoints:
   - {fileID: 3480067039116228759}
+  - {fileID: 7820873961236194590}
   boosterPrefabs:
   - {fileID: 4019718002282649357, guid: cd4281ca22b65da4c89c2970b4673bbc, type: 3}
-  boosterSpawnChance: 0.587
+  boosterSpawnChance: 1
   minBoostersToSpawn: 0
   maxBoostersToSpawn: 1
 --- !u!114 &7350748077406912604
@@ -398,6 +431,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3480067039116228759}
+  - {fileID: 7820873961236194590}
   m_Father: {fileID: 6652905263144021641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7766618874103158351

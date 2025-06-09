@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxMoveSpeed = 20f;
     [SerializeField] private float speedIncreaseRate = 0.1f; // Speed added per second
 
+    [Header("Refs")]
+    [SerializeField] private CameraEffects cameraEffects;
+    
     public float CurrentMoveSpeed { get; private set; }
 
     // --- Variables to manage the speed boost ---
@@ -79,6 +82,17 @@ public class GameManager : MonoBehaviour
             {
                 CurrentMoveSpeed = maxMoveSpeed;
             }
+        }
+
+        if (BoosterHandler.Instance.BoosterActiveTimer > 0)
+        {
+            speedBoostAmount = BoosterHandler.Instance.BoostBonus;
+        }
+        else
+        {
+            speedBoostAmount = 0f;
+            CurrentPlayerState = PlayerState.Normal;
+            SendPlayerState(CurrentPlayerState);
         }
         
         // --- FOR TESTING ---
@@ -161,13 +175,15 @@ public class GameManager : MonoBehaviour
             StopCoroutine(activeSpeedBoostCoroutine);
         }
         
+        cameraEffects.ChangeCamFOV(duration);
+        
         activeSpeedBoostCoroutine = StartCoroutine(SpeedBoostRoutine(bonus, duration));
     }
 
     private IEnumerator SpeedBoostRoutine(float bonus, float duration)
     {
         Debug.Log($"Speed boost started! Adding {bonus} speed.");
-        speedBoostAmount = bonus;
+        //speedBoostAmount = bonus;
 
         CurrentPlayerState = PlayerState.Boosted;
         SendPlayerState(CurrentPlayerState);
@@ -175,11 +191,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         
         Debug.Log("Speed boost ended. Reverting speed.");
-        speedBoostAmount = 0;
+        //speedBoostAmount = 0;
         activeSpeedBoostCoroutine = null; // Mark the coroutine as finished
         
-        CurrentPlayerState = PlayerState.Normal;
-        SendPlayerState(CurrentPlayerState);
+        //CurrentPlayerState = PlayerState.Normal;
+        //SendPlayerState(CurrentPlayerState);
     }
 
     private void SendPlayerState(PlayerState playerState)

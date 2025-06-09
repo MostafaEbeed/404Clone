@@ -43,6 +43,8 @@ public class Health : MonoBehaviour
 
     private Coroutine activeSpeedBoostCoroutine;
     
+    private BoosterHandler boosterHandler;
+    
     void Awake()
     {
         // Initialize health on awake
@@ -53,6 +55,20 @@ public class Health : MonoBehaviour
     {
         // Trigger initial health update for UI etc.
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        boosterHandler = GetComponent<BoosterHandler>();
+    }
+
+    private void Update()
+    {
+        if (boosterHandler.BoosterActiveTimer > 0)
+        {
+            isInvincible = true;
+        }
+        else
+        {
+            isInvincible = false;
+        }
     }
 
     /// <summary>
@@ -68,10 +84,13 @@ public class Health : MonoBehaviour
         }
 
         //SpeedGameManager.Instance.DamagePlayer();
-        SpeedGameAudioManager.Instance.PlaySFXNoEffect(hitObjectSFX);
-
+        
+        if(isInvincible)
+            return;
+        
+        
         // If invincible, prevent health from dropping below 1
-        if (isInvincible && currentHealth - amount < 1)
+        /*if (isInvincible && currentHealth - amount < 1)
         {
             // Only apply damage if current health is already greater than 1
             if (currentHealth > 1)
@@ -83,12 +102,13 @@ public class Health : MonoBehaviour
             }
             // If already at 1 health and invincible, take no damage
             return;
-        }
+        }*/
 
         // Apply damage normally
         currentHealth -= amount;
         OnDamaged?.Invoke();
-
+        PlayerController.Instance.OnPlayerDamaged?.Invoke();
+        SpeedGameAudioManager.Instance.PlaySFXNoEffect(hitObjectSFX);
         //Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}/{maxHealth}");
 
 
@@ -165,7 +185,7 @@ public class Health : MonoBehaviour
         isInvincible = invincible;
         Debug.Log($"{gameObject.name} Invincibility set to: {isInvincible}");
 
-        activeSpeedBoostCoroutine = StartCoroutine(InvincibleBoostRoutine(invincible, duration));
+        //activeSpeedBoostCoroutine = StartCoroutine(InvincibleBoostRoutine(invincible, duration));
     }
 
     private IEnumerator InvincibleBoostRoutine(bool invincible, float duration)
