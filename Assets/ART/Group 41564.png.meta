@@ -109,7 +109,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -663,7 +663,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -672,7 +672,29 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Group 41564_0: 1237892583155219247
+      Group 41564_1: -6166193903206762170
+      Group 41564_10: 2797963325701165148
+      Group 41564_11: 2241705578101386548
+      Group 41564_12: -1877982910368667297
+      Group 41564_13: -2073858455435795772
+      Group 41564_14: -3936800788189164147
+      Group 41564_15: -5152985418361782142
+      Group 41564_16: -4399449812280518948
+      Group 41564_17: 2143236438267260572
+      Group 41564_18: -42802297097280433
+      Group 41564_19: -4979926857865689973
+      Group 41564_2: 7142887972118119735
+      Group 41564_20: -225575462943652238
+      Group 41564_21: 3991814294898630719
+      Group 41564_3: 5340905795813962489
+      Group 41564_4: 7193063269746943221
+      Group 41564_5: -1538068548830596002
+      Group 41564_6: -6316265265974121486
+      Group 41564_7: 4742380648974453357
+      Group 41564_8: 9152290487010248708
+      Group 41564_9: -1446504080762155564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

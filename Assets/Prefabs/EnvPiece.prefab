@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 7646435343790903435}
   - component: {fileID: 164317507913925056}
   - component: {fileID: 7477018777049217912}
+  - component: {fileID: 7350748077406912604}
   m_Layer: 6
   m_Name: EnvPiece
   m_TagString: Untagged
@@ -175,7 +176,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b11195d82056f164d95958b090c23964, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -260,6 +261,18 @@ MonoBehaviour:
   boosterSpawnChance: 0.587
   minBoostersToSpawn: 0
   maxBoostersToSpawn: 1
+--- !u!114 &7350748077406912604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321454411561829426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812ad2e99af230049a91ab73b7d1ac31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5051794526598897357
 GameObject:
   m_ObjectHideFlags: 0

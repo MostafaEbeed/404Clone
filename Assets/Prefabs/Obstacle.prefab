@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8863707651500604346}
   - component: {fileID: 861081048389630352}
   - component: {fileID: 4136864769279602738}
+  - component: {fileID: 223048265405173990}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2246650992860625620, guid: 6bd4d3f0f45d5ab4e91c6080be75b2bf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,18 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a5f4782d0637c42acddd10a89227e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
   damageAmount: 1
-  solidCollision: {fileID: 0}
-  hitForceMultiplier: 500
-  torqueMultiplier: 100
-  destroyDelayAfterHit: 5
-  blocksPathAfterHit: 0
-  destroyOnHit: 0
-  coinColumnSpawnPoints: []
-  coinsPerColumn: 3
-  coinSpacing: 0.6
-  hitEffectPrefab: {fileID: 0}
 --- !u!61 &861081048389630352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,3 +177,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &223048265405173990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693939218265384095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812ad2e99af230049a91ab73b7d1ac31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,6 +30,8 @@ public class Health : MonoBehaviour
     // --- Events ---
     // Event triggered when health changes (passes current health, max health)
     public event Action<int, int> OnHealthChanged;
+
+    public static Action OnDamaged;
     // Event triggered when health reaches zero
     public event Action OnDied;
 
@@ -85,6 +87,8 @@ public class Health : MonoBehaviour
 
         // Apply damage normally
         currentHealth -= amount;
+        OnDamaged?.Invoke();
+
         //Debug.Log($"{gameObject.name} took {amount} damage. Health: {currentHealth}/{maxHealth}");
 
 

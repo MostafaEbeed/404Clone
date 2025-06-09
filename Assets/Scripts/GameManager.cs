@@ -17,9 +17,16 @@ public class GameManager : MonoBehaviour
         Gameplay,
         GameOver
     }
+    
+    public enum PlayerState
+    {
+        Normal,
+        Boosted
+    }
 
     // The current state of the game
     public GameState CurrentState;
+    public PlayerState CurrentPlayerState;
 
     // Event to notify other parts of the game when the state changes
     // UI and Sound managers will subscribe to this event.
@@ -105,9 +112,10 @@ public class GameManager : MonoBehaviour
         {
             case GameState.StartMenu:
                 HandleStartMenu();
+                BroadCastToAllPlayerStateListeners(PlayerState.Normal);
                 break;
             case GameState.Countdown:
-                StartCoroutine(CountdownRoutine());
+                //StartCoroutine(CountdownRoutine());
                 break;
             case GameState.Gameplay:
                 HandleGameplay();
@@ -126,6 +134,17 @@ public class GameManager : MonoBehaviour
         foreach (IGameStateListener gameStateListener in gameStateListeners)
         {
             gameStateListener.OnGameStateChange(gameState);
+        }
+    }
+    
+    private void BroadCastToAllPlayerStateListeners(PlayerState playerState)
+    {
+        IEnumerable<IPlayerStateListener> playerStateListeners =
+            FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IPlayerStateListener>();
+
+        foreach (IPlayerStateListener playerStateListener in playerStateListeners)
+        {
+            playerStateListener.OnPlayerStateChange(playerState);
         }
     }
 
@@ -149,12 +168,23 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Speed boost started! Adding {bonus} speed.");
         speedBoostAmount = bonus;
+
+        CurrentPlayerState = PlayerState.Boosted;
+        SendPlayerState(CurrentPlayerState);
         
         yield return new WaitForSeconds(duration);
         
         Debug.Log("Speed boost ended. Reverting speed.");
         speedBoostAmount = 0;
         activeSpeedBoostCoroutine = null; // Mark the coroutine as finished
+        
+        CurrentPlayerState = PlayerState.Normal;
+        SendPlayerState(CurrentPlayerState);
+    }
+
+    private void SendPlayerState(PlayerState playerState)
+    {
+        BroadCastToAllPlayerStateListeners(CurrentPlayerState); 
     }
     
     public void StartGame()
@@ -166,7 +196,15 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         // This will be called by the player script when it collides with an obstacle
+        CurrentPlayerState = PlayerState.Normal;
+        SendPlayerState(CurrentPlayerState);
+        
         SetState(GameState.GameOver);
+    }
+
+    public void StartGamePlay()
+    {
+        SetState(GameState.Gameplay);
     }
 
     // --- State-specific logic ---

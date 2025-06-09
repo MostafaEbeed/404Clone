@@ -9,6 +9,8 @@ public class Booster : MonoBehaviour
     
     [Tooltip("How long the speed boost and invincibility will last, in seconds.")]
     [SerializeField] private float boostDuration = 5f;
+    
+    [SerializeField] private AudioClip boostSound;
 
     // OnTriggerEnter2D is used for non-physics collisions (triggers)
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,6 +29,8 @@ public class Booster : MonoBehaviour
             // Tell the GameManager to apply the speed boost
             GameManager.Instance.ApplyTemporarySpeedBoost(speedBonus, boostDuration);
 
+            SpeedGameAudioManager.Instance.PlaySFX(boostSound);
+            
             // Optional: Play a sound or show a particle effect here
 
             // Destroy the booster so it can't be collected again
