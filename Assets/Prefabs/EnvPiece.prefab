@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 1992515114675791551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -284,9 +284,10 @@ MonoBehaviour:
   - {fileID: 4693939218265384095, guid: 72a7c5e8600e94a4ab732f2ce35f3e81, type: 3}
   - {fileID: 4693939218265384095, guid: 77fb2b31f79a54847b2f6b0a096f059d, type: 3}
   - {fileID: 4693939218265384095, guid: 63c0bac8da497fe40bbae34c2c907c5b, type: 3}
+  - {fileID: 4693939218265384095, guid: 39e5631766320a941b9837eca86b7954, type: 3}
   obstacleSpawnChance: 0.973
   minObstaclesToSpawn: 1
-  maxObstaclesToSpawn: 3
+  maxObstaclesToSpawn: 2
   boosterSpawnPoints:
   - {fileID: 3480067039116228759}
   - {fileID: 7820873961236194590}
@@ -365,7 +366,7 @@ Transform:
   m_GameObject: {fileID: 5579495889273594879}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.98, y: 0, z: 0}
+  m_LocalPosition: {x: -21.98, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

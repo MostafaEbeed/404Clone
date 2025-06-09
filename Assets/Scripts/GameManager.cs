@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float speedIncreaseRate = 0.1f; // Speed added per second
     [SerializeField] private float nextTimeToIncreaseSpeed = 30f;
     private float timerToNextTimeToIncreaseSpeed;
+    private bool canIncreaseSpeed;
 
     [Header("Refs")]
     [SerializeField] private CameraEffects cameraEffects;
@@ -78,7 +79,28 @@ public class GameManager : MonoBehaviour
         // Increase speed over time only during gameplay
         if (CurrentState == GameState.Gameplay)
         {
-            timerToNextTimeToIncreaseSpeed += Time.deltaTime;
+            if (CurrentPlayerState == PlayerState.Normal)
+            {
+                canIncreaseSpeed = true;
+            }
+            else
+            {
+                canIncreaseSpeed = false;
+            }
+
+            if (canIncreaseSpeed)
+            {
+                if (CurrentMoveSpeed < maxMoveSpeed)
+                {
+                    CurrentMoveSpeed += speedIncreaseRate * Time.deltaTime;
+                }
+                else
+                {
+                    CurrentMoveSpeed = maxMoveSpeed;
+                }
+            }
+            
+            /*timerToNextTimeToIncreaseSpeed += Time.deltaTime;
             if (timerToNextTimeToIncreaseSpeed > nextTimeToIncreaseSpeed)
             {
                 timerToNextTimeToIncreaseSpeed = 0;
@@ -92,7 +114,7 @@ public class GameManager : MonoBehaviour
                 {
                     CurrentMoveSpeed = maxMoveSpeed;
                 }
-            }
+            }*/
         }
 
         if (BoosterHandler.Instance.BoosterActiveTimer > 0)

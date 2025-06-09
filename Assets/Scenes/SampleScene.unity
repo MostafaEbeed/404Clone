@@ -2614,9 +2614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   CurrentPlayerState: 0
-  initialMoveSpeed: 15
-  maxMoveSpeed: 45
-  speedIncreaseRate: 10
+  initialMoveSpeed: 10
+  maxMoveSpeed: 30
+  speedIncreaseRate: 0.18
   nextTimeToIncreaseSpeed: 30
   cameraEffects: {fileID: 519420034}
 --- !u!1 &1158120726

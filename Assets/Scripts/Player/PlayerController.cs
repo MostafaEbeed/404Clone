@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour, IGameStateListener, IPlayerStateL
     private void HandleKeyboardInput()
     {
         // For easy testing in the editor
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetMouseButtonDown(0))
         {
             Jump();
         }
