@@ -3,9 +3,10 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HUDUIPanel : MonoBehaviour
+public class HUDUIPanel : MonoBehaviour, IPlayerStateListener
 {
     [SerializeField] private TextMeshProUGUI boostTimerText;
+    [SerializeField] private GameObject boostTimerObject;
 
     private float timerDuration;
     
@@ -36,5 +37,17 @@ public class HUDUIPanel : MonoBehaviour
     private void OnBoost(float duration)
     {
         timerDuration = duration;
+    }
+
+    public void OnPlayerStateChange(GameManager.PlayerState playerState)
+    {
+        if (playerState == GameManager.PlayerState.Boosted)
+        {
+            boostTimerObject.SetActive(true);
+        }
+        else
+        {
+            boostTimerObject.SetActive(false);
+        }
     }
 }

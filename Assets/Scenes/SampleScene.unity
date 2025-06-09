@@ -1410,6 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostTimerText: {fileID: 1533504187}
+  boostTimerObject: {fileID: 1368718193}
 --- !u!1 &709321056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,7 +1983,7 @@ MonoBehaviour:
   playerVisual: {fileID: 748081774}
   speedVisual: {fileID: 1388572071}
   playerRotSpeed: 10
-  jumpForce: 20
+  jumpForce: 16
   gravityMultiplier: 5
   groundCheck: {fileID: 494127751}
   groundCheckRadius: 0.2
@@ -2615,7 +2616,8 @@ MonoBehaviour:
   CurrentPlayerState: 0
   initialMoveSpeed: 15
   maxMoveSpeed: 45
-  speedIncreaseRate: 0
+  speedIncreaseRate: 10
+  nextTimeToIncreaseSpeed: 30
   cameraEffects: {fileID: 519420034}
 --- !u!1 &1158120726
 GameObject:
