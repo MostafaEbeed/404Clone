@@ -1,7 +1,7 @@
 // Booster.cs - Attach to Booster prefabs
 using UnityEngine;
 
-public class Booster : MonoBehaviour
+public class Booster : MonoBehaviour, IPlayerStateListener
 {
     [Header("Boost Settings")]
     [Tooltip("The flat amount of speed to add to the game's current speed.")]
@@ -38,5 +38,11 @@ public class Booster : MonoBehaviour
             // Destroy the booster so it can't be collected again
             Destroy(gameObject);
         }
+    }
+
+    public void OnPlayerStateChange(GameManager.PlayerState playerState)
+    {
+        if(playerState == GameManager.PlayerState.Boosted)
+            Destroy(gameObject);
     }
 }

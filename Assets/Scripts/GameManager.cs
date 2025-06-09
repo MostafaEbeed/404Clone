@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     // Event to notify other parts of the game when the state changes
     // UI and Sound managers will subscribe to this event.
     public static event Action<GameState> OnStateChanged;
+    public Action <float> OnBoost;
+
 
     [Header("Game Speed Settings")]
     [SerializeField] private float initialMoveSpeed = 5f;

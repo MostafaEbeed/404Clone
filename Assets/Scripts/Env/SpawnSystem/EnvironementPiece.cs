@@ -52,8 +52,12 @@ namespace EnvSpawnSystem
             // --- Call the spawning logic for both types ---
             ProcessSpawning(obstacleSpawnPoints, obstaclePrefabs, obstacleSpawnChance, minObstaclesToSpawn,
                 maxObstaclesToSpawn);
-            ProcessSpawning(boosterSpawnPoints, boosterPrefabs, boosterSpawnChance, minBoostersToSpawn,
-                maxBoostersToSpawn);
+
+            if (GameManager.Instance.CurrentPlayerState == GameManager.PlayerState.Normal)
+            {
+                ProcessSpawning(boosterSpawnPoints, boosterPrefabs, boosterSpawnChance, minBoostersToSpawn,
+                    maxBoostersToSpawn);
+            }
         }
 
         void Update()

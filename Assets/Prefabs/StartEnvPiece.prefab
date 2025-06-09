@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 7477018777049217912}
   - component: {fileID: 7350748077406912604}
   m_Layer: 6
-  m_Name: EnvPiece
+  m_Name: StartEnvPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,13 +280,10 @@ MonoBehaviour:
   obstacleSpawnPoints:
   - {fileID: 5215480133196581215}
   - {fileID: 7573471501327441081}
-  obstaclePrefabs:
-  - {fileID: 4693939218265384095, guid: 72a7c5e8600e94a4ab732f2ce35f3e81, type: 3}
-  - {fileID: 4693939218265384095, guid: 77fb2b31f79a54847b2f6b0a096f059d, type: 3}
-  - {fileID: 4693939218265384095, guid: 63c0bac8da497fe40bbae34c2c907c5b, type: 3}
-  obstacleSpawnChance: 0.973
-  minObstaclesToSpawn: 1
-  maxObstaclesToSpawn: 3
+  obstaclePrefabs: []
+  obstacleSpawnChance: 0
+  minObstaclesToSpawn: 0
+  maxObstaclesToSpawn: 0
   boosterSpawnPoints:
   - {fileID: 3480067039116228759}
   - {fileID: 7820873961236194590}

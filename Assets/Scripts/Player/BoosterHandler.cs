@@ -40,7 +40,10 @@ public class BoosterHandler : MonoBehaviour
 
     public void ActivateBooster(float bonus, float boosterActiveTime)
     {
-        boosterActiveTimer += boosterActiveTime;
+        //boosterActiveTimer += boosterActiveTime;
+        boosterActiveTimer = boosterActiveTime;
         boostBonus = bonus;
+        
+        GameManager.Instance.OnBoost?.Invoke(boosterActiveTimer);
     }
 }

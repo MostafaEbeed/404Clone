@@ -11,6 +11,8 @@ namespace EnvSpawnSystem
         [Tooltip("The list of environment prefabs to spawn. They must have the EnvironmentPiece script.")]
         [SerializeField]
         private List<EnvironementPiece> environmentPrefabs;
+        [SerializeField]
+        private EnvironementPiece environmentFirstPiecePrefab;
 
         [Tooltip("The starting point where the very first piece will be spawned.")] [SerializeField]
         private Transform initialSpawnPoint;
@@ -91,9 +93,7 @@ namespace EnvSpawnSystem
 
         private void SpawnFirstPiece()
         {
-            if (environmentPrefabs.Count == 0) return;
-            int randomIndex = Random.Range(0, environmentPrefabs.Count);
-            EnvironementPiece piecePrefab = environmentPrefabs[randomIndex];
+            EnvironementPiece piecePrefab = environmentFirstPiecePrefab;
 
             // Instantiate the first piece and update our reference
             lastSpawnedPiece = Instantiate(piecePrefab, initialSpawnPoint.position, Quaternion.identity);
